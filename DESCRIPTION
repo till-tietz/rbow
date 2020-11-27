@@ -10,9 +10,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    dqrng (>= 0.2.1),
-    purrr (>= 0.3.4),
+    dqrng (>= 0.2.0),
+    purrr (>= 0.3.0),
     furrr (>= 0.2.1),
-    future (>= 1.20.1),
     stats (>= 3.6.2)
 RoxygenNote: 7.1.1
