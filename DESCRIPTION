@@ -1,6 +1,6 @@
 Package: rbow
 Type: Package
-Title: Bag of Words Analysis for Multiple Dictionaries. 
+Title: Bag of Words and Document Frequency Analysis for Multiple Dictionaries. 
 Version: 0.1.0
 Author: Till Tietz
 Maintainer: Till Tietz <ttietz2014@gmail.com>
