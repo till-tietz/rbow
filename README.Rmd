@@ -99,3 +99,20 @@ dfm <- rbow::dfm_analysis(corpus = texts, phenomenon = phenomena, window = 10, n
 head(dfm[[1]])
 
 ```
+
+If you only want to consider certain types of words (i.e. adjectives or adverbs) in your frequency analysis you can do the following 
+
+```{r}
+#look at types of words to filter by 
+unique(tidytext::parts_of_speech[,"pos"])
+
+
+#display only adjectives and adverbs
+dfm_adj_adv <- rbow::dfm_analysis(corpus = texts, phenomenon = phenomena, window = 10, n_terms = 10, 
+                                  filter_ps = TRUE, ps = c("Adjective","Adverb"))
+head(dfm_adj_adv[[1]])
+
+
+```
+
+

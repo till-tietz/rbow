@@ -100,16 +100,74 @@ phenomena terms like this
 dfm <- rbow::dfm_analysis(corpus = texts, phenomenon = phenomena, window = 10, n_terms = 10)
 head(dfm[[1]])
 #> $pronouns
-#> analysis_text
-#> positivity        she        why       they       this  certainty      words 
-#>       2868       2761       2679       2673       2624       2585       2583 
-#>    neutral       bold        bad 
-#>       2577       2551       2545 
+#>    analysis_text Freq
+#> 1          apple 2680
+#> 2           else 2624
+#> 3            why 2581
+#> 4        certain 2577
+#> 5          words 2525
+#> 6              I 2494
+#> 7        neutral 2474
+#> 8         orange 2466
+#> 9            red 2453
+#> 10    positivity 2447
 #> 
 #> $nouns
-#> analysis_text
-#>       this positivity        she       blue      apple  certainty      words 
-#>        735        734        729        704        701        695        694 
-#>  uncertain        bad       else 
-#>        680        678        673
+#>    analysis_text Freq
+#> 1              I  773
+#> 2           else  768
+#> 3            red  725
+#> 4            why  724
+#> 5          apple  716
+#> 6            you  716
+#> 7        certain  710
+#> 8     positivity  709
+#> 9          words  709
+#> 10       neutral  708
+```
+
+If you only want to consider certain types of words (i.e. adjectives or
+adverbs) in your frequency analysis you can do the following
+
+``` r
+#look at types of words to filter by 
+unique(tidytext::parts_of_speech[,"pos"])
+#> # A tibble: 14 x 1
+#>    pos                  
+#>    <chr>                
+#>  1 Adjective            
+#>  2 Noun                 
+#>  3 <NA>                 
+#>  4 Plural               
+#>  5 Adverb               
+#>  6 Preposition          
+#>  7 Verb (transitive)    
+#>  8 Verb (usu participle)
+#>  9 Verb (intransitive)  
+#> 10 Interjection         
+#> 11 Noun Phrase          
+#> 12 Conjunction          
+#> 13 Definite Article     
+#> 14 Pronoun
+
+
+#display only adjectives and adverbs
+dfm_adj_adv <- rbow::dfm_analysis(corpus = texts, phenomenon = phenomena, window = 10, n_terms = 10, 
+                                  filter_ps = TRUE, ps = c("Adjective","Adverb"))
+head(dfm_adj_adv[[1]])
+#> $pronouns
+#>   analysis_text Freq
+#> 2          else 2624
+#> 3           why 2581
+#> 4       certain 2577
+#> 7       neutral 2474
+#> 9           red 2453
+#> 
+#> $nouns
+#>    analysis_text Freq
+#> 2           else  768
+#> 3            red  725
+#> 4            why  724
+#> 7        certain  710
+#> 10       neutral  708
 ```
