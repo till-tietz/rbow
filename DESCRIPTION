@@ -15,4 +15,5 @@ Imports:
     furrr (>= 0.2.1),
     stats (>= 3.6.2),
     ggplot2 (>= 3.3.2)
+    tidytext (>= 0.2.6)
 RoxygenNote: 7.1.1

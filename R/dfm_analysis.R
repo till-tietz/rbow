@@ -4,10 +4,12 @@
 #' @param phenomenon a list of character vectors with terms around which words will be counted for the dfm
 #' @param window number of words left and right of a phenomenon term to be considered for the dfm
 #' @param n_terms number of terms displayed in dfm
+#' @param filter_ps if TRUE enables filtering of results by part of speech (i.e only adjectives and adverbs)
+#' @param ps character vector of parts of speech to filter. see selection with unique(tidytext::parts_of_speech[,"pos"])
 #' @return list of dfms (one dfm per text in corpus)
 #' @export
 
-dfm_analysis <- function(corpus, phenomenon, window, n_terms) {
+dfm_analysis <- function(corpus, phenomenon, window = 10, n_terms = 10, filter_ps = FALSE, ps = NULL) {
   phenomenon_grep <-
     lapply(phenomenon, function(x)
       paste(x, sep = "", collapse = "|"))
@@ -51,7 +53,17 @@ dfm_analysis <- function(corpus, phenomenon, window, n_terms) {
 
         #get the number of occurences for each term
         dfm <-
-          sort(table(analysis_text), decreasing = TRUE)[c(1:n_terms)]
+          as.data.frame(sort(table(analysis_text), decreasing = TRUE)[c(1:n_terms)])
+
+        if(filter_ps == TRUE){
+          terms <- merge(dfm, tidytext::parts_of_speech, by.x = "analysis_text", by.y = "word")
+          terms <- unique(terms[which(terms[,"pos"] %in% ps),1])
+
+          dfm <- dfm[which(dfm[,"analysis_text"] %in% terms),]
+        } else {
+          dfm <- dfm
+        }
+
       } else {
         dfm <- NA
       }
