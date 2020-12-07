@@ -7,7 +7,7 @@
 
 <!-- badges: end -->
 
-rbow allows you to run simple types of document frequency in context
+rbow allows you to run simple types of word frequency in context
 analysis on multiple texts and dictionaries.  
 It currently has implementations for two main types of analysis:  
    1. Frequency of occurrence of select terms (called descriptors in
@@ -101,29 +101,29 @@ dfm <- rbow::dfm_analysis(corpus = texts, phenomenon = phenomena, window = 10, n
 head(dfm[[1]])
 #> $pronouns
 #>    analysis_text Freq
-#> 1          apple 2680
-#> 2           else 2624
-#> 3            why 2581
-#> 4        certain 2577
-#> 5          words 2525
-#> 6              I 2494
-#> 7        neutral 2474
-#> 8         orange 2466
-#> 9            red 2453
-#> 10    positivity 2447
+#> 1           good 2742
+#> 2            she 2647
+#> 3           bold 2612
+#> 4      uncertain 2608
+#> 5          apple 2605
+#> 6             it 2601
+#> 7           boat 2584
+#> 8            why 2538
+#> 9       positive 2498
+#> 10          blue 2469
 #> 
 #> $nouns
 #>    analysis_text Freq
-#> 1              I  773
-#> 2           else  768
-#> 3            red  725
-#> 4            why  724
-#> 5          apple  716
-#> 6            you  716
-#> 7        certain  710
-#> 8     positivity  709
-#> 9          words  709
-#> 10       neutral  708
+#> 1        certain  771
+#> 2            why  771
+#> 3           good  770
+#> 4            she  758
+#> 5           bold  755
+#> 6             it  745
+#> 7       positive  729
+#> 8           boat  719
+#> 9          green  717
+#> 10        orange  716
 ```
 
 If you only want to consider certain types of words (i.e. adjectives or
@@ -157,17 +157,18 @@ dfm_adj_adv <- rbow::dfm_analysis(corpus = texts, phenomenon = phenomena, window
 head(dfm_adj_adv[[1]])
 #> $pronouns
 #>   analysis_text Freq
-#> 2          else 2624
-#> 3           why 2581
-#> 4       certain 2577
-#> 7       neutral 2474
-#> 9           red 2453
+#> 1          good 2742
+#> 3          bold 2612
+#> 4     uncertain 2608
+#> 8           why 2538
+#> 9      positive 2498
 #> 
 #> $nouns
-#>    analysis_text Freq
-#> 2           else  768
-#> 3            red  725
-#> 4            why  724
-#> 7        certain  710
-#> 10       neutral  708
+#>   analysis_text Freq
+#> 1       certain  771
+#> 2           why  771
+#> 3          good  770
+#> 5          bold  755
+#> 7      positive  729
+#> 9         green  717
 ```

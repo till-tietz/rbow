@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-| rbow allows you to run simple types of document frequency in context analysis on multiple texts and dictionaries.
+| rbow allows you to run simple types of word frequency in context analysis on multiple texts and dictionaries.
 | It currently has implementations for two main types of analysis: 
 |    1. Frequency of occurrence of select terms (called descriptors in rbow) 
 |        within some window around other terms (called phenomena in rbow).
