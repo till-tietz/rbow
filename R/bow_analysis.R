@@ -56,7 +56,8 @@ bow_analysis <-
           analysis_text <-
             text_window(text = corpus_i,
                         start = min_position,
-                        end = max_position)
+                        end = max_position,
+                        position = positions)
 
           #set up loop over each descriptor
           each_descriptor <- function(x) {
