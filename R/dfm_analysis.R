@@ -1,4 +1,4 @@
-#' Create a document frequency matrix (sorted in descending order) of terms that occur within some window around a given set of words (descriptors)
+#' Create a document frequency matrix (sorted in descending order) of terms that occur within some window around a given set of words (phenomenon)
 #'
 #' @param corpus the text or texts to be analyzed as a list of character vectors
 #' @param phenomenon a list of character vectors with terms around which words will be counted for the dfm
