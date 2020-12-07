@@ -8,7 +8,7 @@
 
 stem_texts <- function(texts, language){
   each_text <- function(x){
-    stem_vec <- SnowballC::wordStem(words, language = language)
+    stem_vec <- SnowballC::wordStem(texts[[x]], language = language)
     return(stem_vec)
   }
   out <- purrr::map(1:length(texts), ~each_text(.x))
