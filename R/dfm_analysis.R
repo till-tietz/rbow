@@ -65,19 +65,18 @@ dfm_analysis <-
               as.data.frame(sort(table(unlist(
                 analysis_text[[1]]
               )), decreasing = TRUE)[c(1:n_terms)])
+
           } else {
             tf <-
               as.data.frame(table(unlist(analysis_text[[1]])))
             tf[, 2] <-
               tf[, 2] / length(unlist(analysis_text[[1]]))
 
+            df <- as.numeric(unique(unlist(analysis_text[[1]])) %in% analysis_text[[2]]) + 1
+
             idf <-
-              as.data.frame("word" = unique(unlist(analysis_text[[1]])),
-                            "idf" = log(length(analysis_text) / (
-                              as.numeric(unique(unlist(
-                                analysis_text[[1]]
-                              )) %in% analysis_text[[2]])
-                            )))
+              data.frame("term" = unique(unlist(analysis_text[[1]])),
+                         "idf" = log(length(analysis_text) / df))
 
             dfm <-
               merge(tf,
@@ -85,19 +84,19 @@ dfm_analysis <-
                     by.x = colnames(tf)[1],
                     by.y = colnames(idf)[1])
             dfm[, "tf-idf"] <- dfm[, 2] * dfm[, 3]
-            dfm <- dfm[, c(1, 4)]
-            dfm <- dplyr::arrange(dfm, desc(colnames(dfm)[2]))
+            dfm <- dfm[, c(1,4)]
+            dfm <- dfm[order(-dfm[,"tf-idf"]),][1:n_terms,]
           }
 
           if (filter_ps == TRUE) {
             terms <-
               merge(dfm,
                     tidytext::parts_of_speech,
-                    by.x = "analysis_text",
+                    by.x = colnames(dfm)[1],
                     by.y = "word")
             terms <- unique(terms[which(terms[, "pos"] %in% ps), 1])
 
-            dfm <- dfm[which(dfm[, "analysis_text"] %in% terms), ]
+            dfm <- dfm[which(dfm[, colnames(dfm)[1]] %in% terms), ]
           } else {
             dfm <- dfm
           }
