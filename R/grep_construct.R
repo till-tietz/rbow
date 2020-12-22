@@ -10,7 +10,7 @@ grep_construct <- function(text_input){
     loop <- function(x){
       text_i <- text_input[[x]]
 
-      text_i[grep("*", text_i, fixed = TRUE)] <- paste(text_i[grep("*", text_i, fixed = TRUE)], "$")
+      text_i[-grep("*", text_i, fixed = TRUE)] <- paste(text_i[-grep("*", text_i, fixed = TRUE)], "$")
       text_i <- gsub("\\*", "", text_i)
       text_i <- gsub(" ", "", text_i)
       text_i <- paste(text_i, sep = "", collapse = "|^")
@@ -20,7 +20,7 @@ grep_construct <- function(text_input){
     out <- purrr::map(1:length(text_input), ~loop(.x))
   } else {
     text_i <- text_input
-    text_i[grep("*", text_i, fixed = TRUE)] <- paste(text_i[grep("*", text_i, fixed = TRUE)], "$")
+    text_i[-grep("*", text_i, fixed = TRUE)] <- paste(text_i[-grep("*", text_i, fixed = TRUE)], "$")
     text_i <- gsub("\\*", "", text_i)
     text_i <- gsub(" ", "", text_i)
     text_i <- paste(text_i, sep = "", collapse = "|^")
