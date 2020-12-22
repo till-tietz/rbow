@@ -20,9 +20,7 @@ dfm_analysis <-
            tf_idf = FALSE ,
            filter_ps = FALSE,
            ps = NULL) {
-    phenomenon_grep <-
-      lapply(phenomenon, function(x)
-        paste(x, sep = "", collapse = "|"))
+    phenomenon_grep <- rbow::grep_construct(text_input = phenomenon)
 
     #set up loop over each text
     each_text <- function(x) {
@@ -91,7 +89,7 @@ dfm_analysis <-
           }
 
           if (!is.null(filter_dictionary)){
-            filter_dict_grep <- paste(filter_dictionary, sep = "", collapse = "|")
+            filter_dict_grep <- rbow::grep_construct(text_input = filter_dictionary)
 
             filter_index <- grep(filter_dict_grep, dfm[,1])
             dfm <- dfm[filter_index,]

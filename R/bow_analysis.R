@@ -17,14 +17,10 @@ bow_analysis <-
            window = 10,
            per_occurrence = TRUE) {
     #turn descriptors into regular expression (this allows us to search these terms within a character vector)
-    descriptors_grep <-
-      lapply(descriptors, function(x)
-        paste(x, sep = "", collapse = "|"))
+    descriptors_grep <- rbow::grep_construct(text_input = descriptors)
 
     #turn phenomena into regular expression (this allows us to search these terms within a character vector)
-    phenomenon_grep <-
-      lapply(phenomenon, function(x)
-        paste(x, sep = "", collapse = "|"))
+    phenomenon_grep <- rbow::grep_construct(text_input = phenomenon)
 
     #set up loop over each text
     each_text <- function(x) {
