@@ -4,6 +4,7 @@
 #' @param phenomenon a list of character vectors with terms around which words will be counted for the dfm
 #' @param window number of words left and right of a phenomenon term to be considered for the dfm
 #' @param n_terms number of terms displayed in dfm
+#' @param filter_dictionary a character vector of words to select from the dfm
 #' @param filter_ps if TRUE enables filtering of results by part of speech (i.e only adjectives and adverbs)
 #' @param ps character vector of parts of speech to filter. see selection with unique(tidytext::parts_of_speech[,"pos"])
 #' @param tf_idf if TRUE function computes tf-idf metric instead of raw counts
@@ -15,6 +16,7 @@ dfm_analysis <-
            phenomenon,
            window = 10,
            n_terms = 10,
+           filter_dictionary = NULL,
            tf_idf = FALSE ,
            filter_ps = FALSE,
            ps = NULL) {
@@ -97,6 +99,16 @@ dfm_analysis <-
             terms <- unique(terms[which(terms[, "pos"] %in% ps), 1])
 
             dfm <- dfm[which(dfm[, colnames(dfm)[1]] %in% terms), ]
+          } else {
+            dfm <- dfm
+          }
+
+          if (!is.null(filter_dictionary)){
+            filter_dict_grep <- lapply(filter_dictionary, function(x)
+              paste(x, sep = "", collapse = "|"))
+
+            filter_index <- grep(filter_dict_grep, dfm[,1])
+            dfm <- dfm[filter_index,]
           } else {
             dfm <- dfm
           }
