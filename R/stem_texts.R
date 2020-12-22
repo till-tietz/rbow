@@ -1,12 +1,12 @@
 # apply SnowballC stemming function to texts
 #'
 #'@param texts list of character vectors
-#'@param language a language supported by SnowballC
+#'@param language a language supported by SnowballC defaults to english
 #'@return list of stemmed character vectors
 #'@export
 
 
-stem_texts <- function(texts, language){
+stem_texts <- function(texts, language = "english"){
   each_text <- function(x){
     stem_vec <- SnowballC::wordStem(texts[[x]], language = language)
     return(stem_vec)
