@@ -95,8 +95,6 @@ dfm_analysis <-
 
             filter_index <- grep(filter_dict_grep, dfm[,1])
             dfm <- dfm[filter_index,]
-          } else {
-            dfm <- dfm
           }
 
           if (filter_ps == TRUE) {
@@ -108,8 +106,6 @@ dfm_analysis <-
             terms <- unique(terms[which(terms[, "pos"] %in% ps), 1])
 
             dfm <- dfm[which(dfm[, colnames(dfm)[1]] %in% terms), ]
-          } else {
-            dfm <- dfm
           }
 
           dfm <- dfm[c(1:n_terms),]
