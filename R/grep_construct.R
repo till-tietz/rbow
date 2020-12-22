@@ -17,7 +17,7 @@ grep_construct <- function(text_input){
       text_i <- paste0("^", text_i)
       return(text_i)
     }
-    out <- purrr::map(1:length(text_list), ~loop(.x))
+    out <- purrr::map(1:length(text_input), ~loop(.x))
   } else {
     text_i <- text_input
     text_i[grep("*", text_i, fixed = TRUE)] <- paste(text_i[grep("*", text_i, fixed = TRUE)], "$")
