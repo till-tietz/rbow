@@ -104,8 +104,7 @@ dfm_analysis <-
           }
 
           if (!is.null(filter_dictionary)){
-            filter_dict_grep <- lapply(filter_dictionary, function(x)
-              paste(x, sep = "", collapse = "|"))
+            filter_dict_grep <- paste(filter_dictionary, sep = "", collapse = "|")
 
             filter_index <- grep(filter_dict_grep, dfm[,1])
             dfm <- dfm[filter_index,]
