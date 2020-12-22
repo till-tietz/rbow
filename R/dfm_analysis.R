@@ -66,7 +66,7 @@ dfm_analysis <-
             dfm <-
               as.data.frame(sort(table(unlist(
                 analysis_text[[1]]
-              )), decreasing = TRUE)[c(1:n_terms)])
+              )), decreasing = TRUE))
 
           } else {
             tf <-
@@ -87,7 +87,16 @@ dfm_analysis <-
                     by.y = colnames(idf)[1])
             dfm[, "tf-idf"] <- dfm[, 2] * dfm[, 3]
             dfm <- dfm[, c(1,4)]
-            dfm <- dfm[order(-dfm[,"tf-idf"]),][1:n_terms,]
+            dfm <- dfm[order(-dfm[,"tf-idf"]),]
+          }
+
+          if (!is.null(filter_dictionary)){
+            filter_dict_grep <- paste(filter_dictionary, sep = "", collapse = "|")
+
+            filter_index <- grep(filter_dict_grep, dfm[,1])
+            dfm <- dfm[filter_index,]
+          } else {
+            dfm <- dfm
           }
 
           if (filter_ps == TRUE) {
@@ -103,14 +112,7 @@ dfm_analysis <-
             dfm <- dfm
           }
 
-          if (!is.null(filter_dictionary)){
-            filter_dict_grep <- paste(filter_dictionary, sep = "", collapse = "|")
-
-            filter_index <- grep(filter_dict_grep, dfm[,1])
-            dfm <- dfm[filter_index,]
-          } else {
-            dfm <- dfm
-          }
+          dfm <- dfm[c(1:n_terms),]
 
         } else {
           dfm <- NA
