@@ -8,7 +8,7 @@ grep_construct <- function(text_input){
 
   if(is.list(text_input)){
     loop <- function(x){
-      text_i <- test_input[[x]]
+      text_i <- text_input[[x]]
 
       text_i[grep("*", text_i, fixed = TRUE)] <- paste(text_i[grep("*", text_i, fixed = TRUE)], "$")
       text_i <- gsub("\\*", "", text_i)
