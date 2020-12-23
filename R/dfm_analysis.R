@@ -1,10 +1,10 @@
 #' Create a document frequency matrix (sorted in descending order) of terms that occur within some window around a given set of words (phenomenon)
 #'
 #' @param corpus the text or texts to be analyzed as a list of character vectors
-#' @param phenomenon a list of character vectors with terms around which words will be counted for the dfm
+#' @param phenomenon a list of character vectors (or list of regular expressions if own_regex == TRUE) with terms around which words will be counted for the dfm
 #' @param window number of words left and right of a phenomenon term to be considered for the dfm
 #' @param n_terms number of terms displayed in dfm
-#' @param filter_dictionary a character vector of words to select from the dfm
+#' @param filter_dictionary a character vector (or regular expression if own_regex == TRUE) of words to select from the dfm
 #' @param tf_idf if TRUE function computes tf-idf metric instead of raw counts
 #' @param filter_ps if TRUE enables filtering of results by part of speech (i.e only adjectives and adverbs)
 #' @param ps character vector of parts of speech to filter. see selection with unique(tidytext::parts_of_speech[,"pos"])

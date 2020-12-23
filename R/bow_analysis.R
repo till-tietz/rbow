@@ -3,8 +3,8 @@
 #' n occurrences descriptor / n occurrences phenomena.
 #'
 #' @param corpus the text or texts to be analyzed as a list of character vectors
-#' @param phenomenon a list of character vectors with terms around which descriptor terms are searched
-#' @param descriptors a list of characters vectors with descriptor terms to search
+#' @param phenomenon a list of character vectors (or list of regular expressions if own_regex == TRUE) with terms around which descriptor terms are searched
+#' @param descriptors a list of characters vectors (or list of regular expressions if own_regex == TRUE) with descriptor terms to search
 #' @param window number of words left and right of a phenomenon term to be searched for a descriptor
 #' @param per_occurrence when TRUE divide the number of descriptor occurrences by the number of phenomena occurrences. when FALSE divide the number of descriptor occurrences by the total number of words within the windows around phenomena. Default TRUE.
 #' @param own_regex when TRUE allows you to add custom regular expressions for phenomenon and descriptors. when FALSE rbow will construct regular expression from the character vectors you supplied. defaults to FALSE
