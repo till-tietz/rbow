@@ -6,8 +6,9 @@
 #' @param phenomenon a list of character vectors with terms around which descriptor terms are searched
 #' @param descriptors a list of characters vectors with descriptor terms to search
 #' @param window number of words left and right of a phenomenon term to be searched for a descriptor
-#' @param per_occurrence when TRUE divide the number of descriptor occurrences by the number of phenomena occurrences. When FALSE divide the number of descriptor occurrences by the total number of words within the windows around phenomena. Default TRUE.
-#' @return list of analyzed texts. Each text list contains a list of results for each analyzed phenomenon. Each phenomenon list contains a data frame summarizing the average number of descriptors occurrences for that phenomenon and a list of numeric vectors for each descriptor indicating the number of descriptor terms within a window for each phenomenon occurrence.
+#' @param per_occurrence when TRUE divide the number of descriptor occurrences by the number of phenomena occurrences. when FALSE divide the number of descriptor occurrences by the total number of words within the windows around phenomena. Default TRUE.
+#' @param own_regex when TRUE allows you to add custom regular expressions for phenomenon and descriptors. when FALSE rbow will construct regular expression from the character vectors you supplied. defaults to FALSE
+#' @return list of analyzed texts. Each text list contains a list of results for each analyzed phenomenon. each phenomenon list contains a data frame summarizing the average number of descriptors occurrences for that phenomenon and a list of numeric vectors for each descriptor indicating the number of descriptor terms within a window for each phenomenon occurrence.
 #' @export
 
 bow_analysis <-
@@ -15,12 +16,20 @@ bow_analysis <-
            phenomenon,
            descriptors,
            window = 10,
-           per_occurrence = TRUE) {
-    #turn descriptors into regular expression (this allows us to search these terms within a character vector)
-    descriptors_grep <- rbow::grep_construct(text_input = descriptors)
+           per_occurrence = TRUE,
+           own_regex = FALSE) {
 
-    #turn phenomena into regular expression (this allows us to search these terms within a character vector)
-    phenomenon_grep <- rbow::grep_construct(text_input = phenomenon)
+    if(own_regex == TRUE){
+      descriptors_grep <- descriptors
+
+      phenomenon_grep <- phenomenon
+    } else {
+      #turn descriptors into regex
+      descriptors_grep <- rbow::grep_construct(text_input = descriptors)
+
+      #turn phenomena into regex
+      phenomenon_grep <- rbow::grep_construct(text_input = phenomenon)
+    }
 
     #set up loop over each text
     each_text <- function(x) {

@@ -5,9 +5,10 @@
 #' @param window number of words left and right of a phenomenon term to be considered for the dfm
 #' @param n_terms number of terms displayed in dfm
 #' @param filter_dictionary a character vector of words to select from the dfm
+#' @param tf_idf if TRUE function computes tf-idf metric instead of raw counts
 #' @param filter_ps if TRUE enables filtering of results by part of speech (i.e only adjectives and adverbs)
 #' @param ps character vector of parts of speech to filter. see selection with unique(tidytext::parts_of_speech[,"pos"])
-#' @param tf_idf if TRUE function computes tf-idf metric instead of raw counts
+#' @param own_regex when TRUE allows you to add custom regular expressions for phenomenon and filter_dictionary. when FALSE rbow will construct regular expression from the character vectors you supplied. defaults to FALSE
 #' @return list of dfms (one dfm per text in corpus)
 #' @export
 
@@ -19,8 +20,14 @@ dfm_analysis <-
            filter_dictionary = NULL,
            tf_idf = FALSE ,
            filter_ps = FALSE,
-           ps = NULL) {
-    phenomenon_grep <- rbow::grep_construct(text_input = phenomenon)
+           ps = NULL,
+           own_regex = FALSE) {
+
+    if(own_regex == TRUE){
+      phenomenon_grep <- phenomenon
+    } else {
+      phenomenon_grep <- rbow::grep_construct(text_input = phenomenon)
+    }
 
     #set up loop over each text
     each_text <- function(x) {
@@ -89,7 +96,12 @@ dfm_analysis <-
           }
 
           if (!is.null(filter_dictionary)){
-            filter_dict_grep <- rbow::grep_construct(text_input = filter_dictionary)
+
+            if(own_regex == TRUE){
+              filter_dict_grep <- filter_dictionary
+            } else {
+              filter_dict_grep <- rbow::grep_construct(text_input = filter_dictionary)
+            }
 
             filter_index <- grep(filter_dict_grep, dfm[,1])
             dfm <- dfm[filter_index,]
