@@ -26,7 +26,7 @@ dfm_analysis <-
     if(own_regex == TRUE){
       phenomenon_grep <- phenomenon
     } else {
-      phenomenon_grep <- rbow::grep_construct(text_input = phenomenon)
+      phenomenon_grep <- rbow::grep_construct(text_input = phenomenon, collapse = TRUE)
     }
 
     #set up loop over each text
@@ -100,7 +100,7 @@ dfm_analysis <-
             if(own_regex == TRUE){
               filter_dict_grep <- filter_dictionary
             } else {
-              filter_dict_grep <- rbow::grep_construct(text_input = filter_dictionary)
+              filter_dict_grep <- rbow::grep_construct(text_input = filter_dictionary, collapse = TRUE)
             }
 
             filter_index <- grep(filter_dict_grep, dfm[,1])

@@ -25,10 +25,10 @@ bow_analysis <-
       phenomenon_grep <- phenomenon
     } else {
       #turn descriptors into regex
-      descriptors_grep <- rbow::grep_construct(text_input = descriptors)
+      descriptors_grep <- rbow::grep_construct(text_input = descriptors, collapse = TRUE)
 
       #turn phenomena into regex
-      phenomenon_grep <- rbow::grep_construct(text_input = phenomenon)
+      phenomenon_grep <- rbow::grep_construct(text_input = phenomenon, collapse = TRUE)
     }
 
     #set up loop over each text
