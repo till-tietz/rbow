@@ -8,12 +8,24 @@
 
 create_plot_data <-
   function(bstrap_output,
+           phenomena = NULL,
+           descriptors = NULL,
            meta_data = NULL,
            combine = FALSE) {
     each_text <- function(x) {
       bstrap_output_i <- bstrap_output[[x]]
-      n_descriptors <- unique(bstrap_output_i[, "descriptor"])
       n_phenomena <- unique(bstrap_output_i[, "phenomenon"])
+      n_descriptors <- unique(bstrap_output_i[, "descriptor"])
+
+      if(!is.null(phenomena)){
+        bstrap_output_i <- bstrap_output_i[which(bstrap_output_i[,"phenomenon"] %in% phenomena),]
+        n_phenomena <- n_phenomena[which(n_phenomena %in% phenomena)]
+      }
+
+      if(!is.null(descriptors)){
+        bstrap_output_i <- bstrap_output_i[which(bstrap_output_i[,"descriptor"] %in% descriptors),]
+        n_descriptors <- n_descriptors[which(n_descriptors %in% descriptors)]
+      }
 
       if (length(n_phenomena) %% 2 == 0) {
         step_size <- (length(n_phenomena) / 2) / 10
