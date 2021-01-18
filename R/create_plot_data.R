@@ -1,6 +1,8 @@
 #'re-format output of bow_ci function to plottable format
 #'
 #'@param bstrap_output output of bow_ci function
+#'@param phenomena character vector specifying which phenomena you wish to plot
+#'@param descriptors character vector specifying which descriptors you wish to plot
 #'@param meta_data a data frame of meta data for each analyzed text i.e year, author etc.
 #'@param combine if TRUE combines plotting data for each text into one data frame; if false returns a data frame for each text; default FALSE
 #'@return data frame or list of data frames
