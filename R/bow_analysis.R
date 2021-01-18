@@ -127,6 +127,7 @@ bow_analysis <-
     }
     #execute loop over texts
     each_text_out <- purrr::map(1:length(corpus), ~ each_text(.x))
+    names(each_text_out) <- names(corpus)
     return(each_text_out)
   }
 

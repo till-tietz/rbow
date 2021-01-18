@@ -23,5 +23,6 @@ clean_text <- function(texts, lexicon = "SMART"){
     return(clean_text)
   }
   out <- furrr::future_map(1:length(texts), ~each_text(.x), .progress = TRUE)
+  names(out) <- names(texts)
   return(out)
 }

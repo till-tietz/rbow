@@ -12,4 +12,5 @@ stem_texts <- function(texts, language = "english"){
     return(stem_vec)
   }
   out <- purrr::map(1:length(texts), ~each_text(.x))
+  names(out) <- names(texts)
 }

@@ -145,5 +145,6 @@ bow_ci <-
       each_text_out <-
         purrr::map(1:length(bow_analysis_output), ~ each_text(.x))
     }
+    names(each_text_out) <- names(bow_analysis_output)
     return(each_text_out)
   }

@@ -46,8 +46,14 @@ tf_idf <- function(corpus, terms, own_regex = FALSE) {
     return(tf_idf_avg)
   }
   tf_out <- purrr::map_dbl(1:n_doc, ~ tf(.x))
-  tf_idf <- data.frame("doc" = c(1:n_doc),
-                       "tf-idf" = tf_out)
+
+  if(is.null(names(corpus))){
+    tf_idf <- data.frame("doc" = c(1:n_doc),
+                         "tf-idf" = tf_out)
+  } else {
+    tf_idf <- data.frame("doc" = names(corpus),
+                         "tf-idf" = tf_out)
+  }
   tf_idf <- tf_idf[order(tf_idf[, 2], decreasing = TRUE), ]
   return(tf_idf)
 }

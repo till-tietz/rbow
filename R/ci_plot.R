@@ -17,7 +17,8 @@ ci_plot <- function(plot_data, scale = "shape"){
                        breaks = c(1:length(unique(plot_data[,"descriptor"]))),
                        labels = unique(plot_data[,"descriptor"]))+
     ggplot2::theme(axis.title.y = ggplot2::element_blank(),
-          legend.title = ggplot2::element_blank())
+          legend.title = ggplot2::element_blank())+
+    ggtitle(plot_data[["text"]][1])
 
   if(scale == "shape"){
     plot <- plot+

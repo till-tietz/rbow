@@ -64,6 +64,7 @@ create_plot_data <-
       } else {
         out <- out
       }
+      out[,"text"] <- rep(names(bstrap_output[x]), nrow(out))
       return(out)
     }
 
