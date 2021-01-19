@@ -54,45 +54,22 @@ bow_ci <-
             if (bootstrap_terms == TRUE) {
               #get the number of occurrences of descriptors
               n_one <- sum(descriptor_i, na.rm = TRUE)
-              #get the number of terms within a window of a phenomenon that are not descriptors
-              n_zero <- ((length(descriptor_i)) * window) - n_one
-
-              #create a binary vector (each digit is a word within the window of phenomenon occurrences)
-              #1 signifies occurrence of a descriptor, 0 signifies occurrence of a non descriptor word
-              #we construct bootstrap samples from this vector
-              zeros <- rep(0, n_zero)
-              ones <- rep(1, n_one)
-              sampling_vec <- c(ones, zeros)
-
-              #set up bootstrap function
-              bootstrap_occurrence <- function(input_vector) {
-                sample_index <-
-                  dqrng::dqsample(c(1:length(input_vector)),
-                                  size = length(input_vector),
-                                  replace = TRUE)
-                sample <-
-                  (sum(input_vector[sample_index], na.rm = TRUE)) / divisor
-                return(sample)
-              }
-              #execute bootstrap
-              bstrap_out <-
-                furrr::future_map_dbl(1:bootstraps,
-                                      ~ bootstrap_occurrence(input_vector = sampling_vec))
-
+              length_vec <- (length(descriptor_i)) * window
+              prob_one <- n_one/length_vec
             } else {
-              boostrap_occurrence_sum <- function(input_vector) {
-                sample_index <-
-                  dqrng::dqsample(c(1:length(input_vector)),
-                                  size = length(input_vector),
-                                  replace = TRUE)
-                sample <-
-                  (sum(input_vector[sample_index], na.rm = TRUE)) / divisor
-              }
-              #execute boostrap
-              bstrap_out <-
-                furrr::future_map_dbl(1:bootstraps,
-                                      ~ boostrap_occurrence_sum(input_vector =  descriptor_i))
+              n_one <- sum(descriptor_i > 0, na.rm = TRUE)
+              length_vec <- length(descriptor_i)
+              prob_one <- n_one/length_vec
             }
+
+            bootstrap_occurrence <- function(pr, length) {
+              sum_vec <- stats::rbinom(1, length, pr)/divisor
+              return(sum_vec)
+            }
+            #execute bootstrap
+            bstrap_out <-
+              furrr::future_map_dbl(1:bootstraps,
+                                    ~ bootstrap_occurrence(pr = prob_one, length = length_vec))
 
             #define upper and lower percentiles based on alpha value
             lperc <- (1 - alpha) / 2
