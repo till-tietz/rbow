@@ -44,7 +44,7 @@ devtools::install_github("till-tietz/rbow")
 
 The following example, while not at all an interesting/principled analysis, will nonetheless hopefully give a decent overview of the types of analyses rbow supports and you may wish to perform.
 
-```{r}
+```{r, warning=FALSE, message=FALSE, error=FALSE}
 library(rbow)
 library(tidyverse)
 
