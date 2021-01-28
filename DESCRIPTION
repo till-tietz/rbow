@@ -6,7 +6,7 @@ Author: Till Tietz
 Maintainer: Till Tietz <ttietz2014@gmail.com>
 Description: Analyse how often various descriptor words are associated with terms of interest. 
     Compute variability measures and confidence intervals for these association measures. 
-License: MIT 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
