@@ -2,7 +2,7 @@
 % Please edit documentation in R/grep_construct.R
 \name{grep_construct}
 \alias{grep_construct}
-\title{utility function that creates regular expression for grep calls in bow and dfm analysis}
+\title{grep_construct}
 \usage{
 grep_construct(text_input, collapse = FALSE)
 }

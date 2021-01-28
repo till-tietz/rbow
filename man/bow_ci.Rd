@@ -2,7 +2,7 @@
 % Please edit documentation in R/bow_ci.R
 \name{bow_ci}
 \alias{bow_ci}
-\title{Compute bootstrap CIs for the average descriptor occurrence metric of the bow_analysis function}
+\title{bow_ci}
 \usage{
 bow_ci(
   bow_analysis_output,

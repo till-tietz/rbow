@@ -2,7 +2,7 @@
 % Please edit documentation in R/text_window.R
 \name{text_window}
 \alias{text_window}
-\title{Utility function that returns the subset of elements in a vector between a start and end position}
+\title{text_window}
 \usage{
 text_window(text, start, end, position, out_of_window = FALSE)
 }

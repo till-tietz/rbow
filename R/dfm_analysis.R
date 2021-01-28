@@ -1,5 +1,7 @@
 #' Create a document frequency matrix (sorted in descending order) of terms that occur within some window around a given set of words (phenomenon)
 #'
+#' @name dfm_analysis
+#' @title dfm_analysis
 #' @param corpus the text or texts to be analyzed as a list of character vectors
 #' @param phenomenon a list of character vectors (or list of regular expressions if own_regex == TRUE) with terms around which words will be counted for the dfm
 #' @param window number of words left and right of a phenomenon term to be considered for the dfm

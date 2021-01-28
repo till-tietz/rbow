@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_plot_data.R
 \name{create_plot_data}
 \alias{create_plot_data}
-\title{re-format output of bow_ci function to plottable format}
+\title{create_plot_data}
 \usage{
 create_plot_data(
   bstrap_output,

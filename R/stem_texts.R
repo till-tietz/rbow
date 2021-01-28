@@ -1,5 +1,7 @@
 # apply SnowballC stemming function to texts
 #'
+#'@name stem_texts
+#'@title stem_texts
 #'@param texts list of character vectors
 #'@param language a language supported by SnowballC defaults to english
 #'@return list of stemmed character vectors

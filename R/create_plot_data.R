@@ -1,5 +1,7 @@
 #'re-format output of bow_ci function to plottable format
 #'
+#'@name create_plot_data
+#'@title create_plot_data
 #'@param bstrap_output output of bow_ci function
 #'@param phenomena character vector specifying which phenomena you wish to plot
 #'@param descriptors character vector specifying which descriptors you wish to plot

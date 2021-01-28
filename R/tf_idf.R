@@ -1,4 +1,7 @@
 #' find the most relevant document for a queery by computing tf-idf for a set of terms within a corpus
+#'
+#' @name tf_idf
+#' @title tf_idf
 #' @param corpus the text or texts to be analyzed as a list of character vectors
 #' @param terms a character vector (or a regular expression if own_regex == TRUE) of terms to determine document relevance with
 #' @param own_regex when TRUE allows you to add custom regular expressions for terms argument. when FALSE rbow will construct regular expression from the character vector you supplied. defaults to FALSE

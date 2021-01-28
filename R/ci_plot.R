@@ -1,5 +1,7 @@
 #'plot results of bow_analysis with bow_ci confidence intervals
 #'
+#'@name ci_plot
+#'@title ci_plot
 #'@param plot_data output of create_plot_data function
 #'@param scale character vector specifying whether phenomena should be plotted with different colours or shapes. options are "shape" or "colour".
 #'@return a ggplot object

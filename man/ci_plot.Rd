@@ -2,7 +2,7 @@
 % Please edit documentation in R/ci_plot.R
 \name{ci_plot}
 \alias{ci_plot}
-\title{plot results of bow_analysis with bow_ci confidence intervals}
+\title{ci_plot}
 \usage{
 ci_plot(plot_data, scale = "shape")
 }
