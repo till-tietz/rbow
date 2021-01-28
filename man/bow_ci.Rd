@@ -16,6 +16,8 @@ bow_ci(
 \arguments{
 \item{bow_analysis_output}{result list outputted by the bow_analysis function}
 
+\item{bootstraps}{number of bootstrap samples to draw (default = 1000)}
+
 \item{alpha}{alpha value to compute CIs with}
 
 \item{window}{window size used in the bow_analysis function (default = 10)}
@@ -23,8 +25,6 @@ bow_ci(
 \item{per_occurrence}{per occurrence value used in the bow_analysis function (default = TRUE)}
 
 \item{bootstrap_terms}{if TRUE the bootstrap function samples the set of all terms within a window of all phenomenon occurrences. If FALSE the boostrap function samples from a vector of descriptor counts for each phenomenon occurrence.}
-
-\item{bootstrap}{number of bootstrap samples to draw (default = 1000)}
 }
 \value{
 list of analzed texts. Each text list contains a data frame of observed means and CI bounds for each descriptor and phenomenon pair.

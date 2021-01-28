@@ -4,7 +4,7 @@
 \alias{text_window}
 \title{Utility function that returns the subset of elements in a vector between a start and end position}
 \usage{
-text_window(text, start, end)
+text_window(text, start, end, position, out_of_window = FALSE)
 }
 \arguments{
 \item{text}{input vector}
@@ -12,6 +12,10 @@ text_window(text, start, end)
 \item{start}{start position}
 
 \item{end}{end position}
+
+\item{position}{vector of word positions around which a window is constructed}
+
+\item{out_of_window}{if TRUE function returns set of words within and outside of window}
 }
 \description{
 Utility function that returns the subset of elements in a vector between a start and end position

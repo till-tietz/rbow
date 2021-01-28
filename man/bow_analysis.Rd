@@ -11,22 +11,25 @@ bow_analysis(
   phenomenon,
   descriptors,
   window = 10,
-  per_occurrence = TRUE
+  per_occurrence = TRUE,
+  own_regex = FALSE
 )
 }
 \arguments{
 \item{corpus}{the text or texts to be analyzed as a list of character vectors}
 
-\item{phenomenon}{a list of character vectors with terms around which descriptor terms are searched}
+\item{phenomenon}{a list of character vectors (or list of regular expressions if own_regex == TRUE) with terms around which descriptor terms are searched}
 
-\item{descriptors}{a list of characters vectors with descriptor terms to search}
+\item{descriptors}{a list of characters vectors (or list of regular expressions if own_regex == TRUE) with descriptor terms to search}
 
 \item{window}{number of words left and right of a phenomenon term to be searched for a descriptor}
 
-\item{per_occurrence}{when TRUE divide the number of descriptor occurrences by the number of phenomena occurrences. When FALSE divide the number of descriptor occurrences by the total number of words within the windows around phenomena. Default TRUE.}
+\item{per_occurrence}{when TRUE divide the number of descriptor occurrences by the number of phenomena occurrences. when FALSE divide the number of descriptor occurrences by the total number of words within the windows around phenomena. Default TRUE.}
+
+\item{own_regex}{when TRUE allows you to add custom regular expressions for phenomenon and descriptors. when FALSE rbow will construct regular expression from the character vectors you supplied. defaults to FALSE}
 }
 \value{
-list of analyzed texts. Each text list contains a list of results for each analyzed phenomenon. Each phenomenon list contains a data frame summarizing the average number of descriptors occurrences for that phenomenon and a list of numeric vectors for each descriptor indicating the number of descriptor terms within a window for each phenomenon occurrence.
+list of analyzed texts. Each text list contains a list of results for each analyzed phenomenon. each phenomenon list contains a data frame summarizing the average number of descriptors occurrences for that phenomenon and a list of numeric vectors for each descriptor indicating the number of descriptor terms within a window for each phenomenon occurrence.
 }
 \description{
 Compute how often a given set of words (descriptors) occur within a given window around

@@ -4,13 +4,27 @@
 \alias{create_plot_data}
 \title{re-format output of bow_ci function to plottable format}
 \usage{
-create_plot_data(bstrap_output)
+create_plot_data(
+  bstrap_output,
+  phenomena = NULL,
+  descriptors = NULL,
+  meta_data = NULL,
+  combine = FALSE
+)
 }
 \arguments{
 \item{bstrap_output}{output of bow_ci function}
+
+\item{phenomena}{character vector specifying which phenomena you wish to plot}
+
+\item{descriptors}{character vector specifying which descriptors you wish to plot}
+
+\item{meta_data}{a data frame of meta data for each analyzed text i.e year, author etc.}
+
+\item{combine}{if TRUE combines plotting data for each text into one data frame; if false returns a data frame for each text; default FALSE}
 }
 \value{
-data frame of plot data
+data frame or list of data frames
 }
 \description{
 re-format output of bow_ci function to plottable format
