@@ -18,16 +18,16 @@ ci_plot <- function(plot_data, scale = "shape"){
                        labels = unique(plot_data[,"descriptor"]))+
     ggplot2::theme(axis.title.y = ggplot2::element_blank(),
           legend.title = ggplot2::element_blank())+
-    ggtitle(plot_data[["text"]][1])
+    ggplot2::ggtitle(plot_data[["text"]][1])
 
   if(scale == "shape"){
     plot <- plot+
-      ggplot2::geom_point(ggplot2::aes(x = observed_mean, y = pseudo_y, shape = as.factor(phenomenon)), size = 1.5)
+      ggplot2::geom_point(ggplot2::aes(x = plot_data[,"observed_mean"], y = plot_data[,"pseudo_y"], shape = as.factor(plot_data[,"phenomenon"])), size = 1.5)
   }
 
   if(scale == "colour"){
     plot <- plot+
-      ggplot2::geom_point(ggplot2::aes(x = observed_mean, y = pseudo_y, colour = as.factor(phenomenon)), size = 1.5)
+      ggplot2::geom_point(ggplot2::aes(x = plot_data[,"observed_mean"], y = plot_data[,"pseudo_y"], colour = as.factor(plot_data[,"phenomenon"])), size = 1.5)
   }
 
   return(plot)
