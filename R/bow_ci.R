@@ -1,7 +1,7 @@
 #' Compute bootstrap CIs for the average descriptor occurrence metric of the bow_analysis function
 #'
 #' @name bow_ci
-#' @title bow_ci
+#'
 #' @param bow_analysis_output result list outputted by the bow_analysis function
 #' @param bootstraps number of bootstrap samples to draw (default = 1000)
 #' @param alpha alpha value to compute CIs with

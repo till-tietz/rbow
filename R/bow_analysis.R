@@ -3,7 +3,7 @@
 #' n occurrences descriptor / n occurrences phenomena.
 #'
 #' @name bow_analysis
-#' @title bow_analysis
+#'
 #' @param corpus the text or texts to be analyzed as a list of character vectors
 #' @param phenomenon a list of character vectors (or list of regular expressions if own_regex == TRUE) with terms around which descriptor terms are searched
 #' @param descriptors a list of characters vectors (or list of regular expressions if own_regex == TRUE) with descriptor terms to search

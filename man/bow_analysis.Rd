@@ -2,7 +2,9 @@
 % Please edit documentation in R/bow_analysis.R
 \name{bow_analysis}
 \alias{bow_analysis}
-\title{bow_analysis}
+\title{Compute how often a given set of words (descriptors) occur within a given window around
+another set of words (phenomena) within a text. This can be computed as a ration of n occurrences descriptor/n total words in window or
+n occurrences descriptor / n occurrences phenomena.}
 \usage{
 bow_analysis(
   corpus,

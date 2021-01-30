@@ -2,7 +2,7 @@
 % Please edit documentation in R/dfm_analysis.R
 \name{dfm_analysis}
 \alias{dfm_analysis}
-\title{dfm_analysis}
+\title{Create a document frequency matrix (sorted in descending order) of terms that occur within some window around a given set of words (phenomenon)}
 \usage{
 dfm_analysis(
   corpus,

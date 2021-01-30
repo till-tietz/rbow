@@ -2,7 +2,7 @@
 % Please edit documentation in R/tf_idf.R
 \name{tf_idf}
 \alias{tf_idf}
-\title{tf_idf}
+\title{find the most relevant document for a queery by computing tf-idf for a set of terms within a corpus}
 \usage{
 tf_idf(corpus, terms, own_regex = FALSE)
 }

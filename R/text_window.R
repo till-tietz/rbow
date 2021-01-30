@@ -1,7 +1,7 @@
 #' Utility function that returns the subset of elements in a vector between a start and end position
 #'
 #'@name text_window
-#'@title text_window
+#'
 #'@param text input vector
 #'@param start start position
 #'@param end end position

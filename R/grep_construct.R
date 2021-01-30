@@ -1,6 +1,6 @@
 #' utility function that creates regular expression for grep calls in bow and dfm analysis
 #' @name grep_construct
-#' @title grep_construct
+#'
 #' @param text_input a character vector or list of character vectors to be turned into regular expression
 #' @param collapse when TRUE function collapses text_input into a single regex string. when FALSE function creates a vector or regex strings. defaults to FALSE
 #' @return a list of regular expressions if input was a list or a regular expression character vector if input was vector

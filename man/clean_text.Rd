@@ -2,7 +2,7 @@
 % Please edit documentation in R/clean_text.R
 \name{clean_text}
 \alias{clean_text}
-\title{clean_text}
+\title{clean text data (remove punctuation, special characters, numbers, english stopwords)}
 \usage{
 clean_text(texts, lexicon = "SMART")
 }
@@ -15,5 +15,5 @@ clean_text(texts, lexicon = "SMART")
 list of cleaned character vectors
 }
 \description{
-clean_text
+clean text data (remove punctuation, special characters, numbers, english stopwords)
 }

@@ -1,7 +1,7 @@
-# clean text data (remove punctuation, special characters, numbers, english stopwords)
+#'clean text data (remove punctuation, special characters, numbers, english stopwords)
 #'
 #'@name clean_text
-#'@title clean_text
+#'
 #'@param texts list of character vectors
 #'@param lexicon stop word lexicon to use
 #'@return list of cleaned character vectors

@@ -2,7 +2,7 @@
 % Please edit documentation in R/stem_texts.R
 \name{stem_texts}
 \alias{stem_texts}
-\title{stem_texts}
+\title{apply SnowballC stemming function to texts}
 \usage{
 stem_texts(texts, language = "english")
 }
@@ -15,5 +15,5 @@ stem_texts(texts, language = "english")
 list of stemmed character vectors
 }
 \description{
-stem_texts
+apply SnowballC stemming function to texts
 }
