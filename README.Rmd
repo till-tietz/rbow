@@ -36,8 +36,7 @@ It also includes some utility functions for text cleaning and stemming.
 
 You can install the development version of rbow from [GitHub](https://github.com/) with:
 
-``` r
-# install.packages("devtools")
+```{r, eval = FALSE}
 devtools::install_github("till-tietz/rbow")
 ```
 ## Usage

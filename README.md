@@ -37,7 +37,6 @@ You can install the development version of rbow from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
 devtools::install_github("till-tietz/rbow")
 ```
 
@@ -128,7 +127,7 @@ plot_data <- rbow::create_plot_data(bstrap_output = cis)
 rbow::ci_plot(plot_data = plot_data[[1]])
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ``` r
 
@@ -141,7 +140,7 @@ plot_data <- rbow::create_plot_data(bstrap_output = cis,
 rbow::ci_plot(plot_data = plot_data[[1]])
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-2.png" width="100%" />
 
 You may also wish to explore how female and male words are commonly
 described in Jane Austen’s work inductively. dfm\_analysis caputres the
