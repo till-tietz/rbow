@@ -12,7 +12,7 @@
 ci_plot <- function(plot_data, scale = "shape"){
 
   plot <- ggplot2::ggplot(plot_data)+
-    ggplot2::geom_segment(ggplot2::aes(x = plot_data[,2], y = plot_data[,6], xend = plot_data[,3], yend = plot_data[,6]), size = 0.2) +
+    ggplot2::geom_errorbarh(ggplot2::aes(xmin = plot_data[,2], y = plot_data[,6], xmax = plot_data[,3], height = 0.01)) +
     ggplot2::xlab("mean occurence") +
     ggplot2::theme_bw() +
     ggplot2::scale_y_continuous(limit = c((min(plot_data[,"pseudo_y"])-0.1),(max(plot_data[,"pseudo_y"])+0.1)),
