@@ -16,5 +16,10 @@ Imports:
     stats (>= 3.6.2),
     ggplot2 (>= 3.3.2),
     tidytext (>= 0.2.6),
-    SnowballC (>= 0.7.0)
+    SnowballC (>= 0.7.0),
+    stopwords (>= 2.2),
+    ISOcodes (>= 2021.02.24)
 RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
