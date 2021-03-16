@@ -12,14 +12,14 @@
 ci_plot <- function(plot_data, scale = "shape"){
 
   plot <- ggplot2::ggplot(plot_data)+
-    ggplot2::geom_errorbarh(ggplot2::aes(xmin = plot_data[,2], y = plot_data[,6], xmax = plot_data[,3], height = (0.025 * length(unique(plot_data[,"descriptor"]))))) +
+    ggplot2::geom_errorbarh(ggplot2::aes(xmin = plot_data[,2], y = plot_data[,6], xmax = plot_data[,3], height = (2.9*((max(plot_data[,"pseudo_y"])+0.1) - (min(plot_data[,"pseudo_y"])-0.1)))/100)) +
     ggplot2::xlab("mean occurence") +
     ggplot2::theme_bw() +
     ggplot2::scale_y_continuous(limit = c((min(plot_data[,"pseudo_y"])-0.1),(max(plot_data[,"pseudo_y"])+0.1)),
-                       breaks = c(1:length(unique(plot_data[,"descriptor"]))),
-                       labels = unique(plot_data[,"descriptor"]))+
+                                breaks = c(1:length(unique(plot_data[,"descriptor"]))),
+                                labels = unique(plot_data[,"descriptor"]))+
     ggplot2::theme(axis.title.y = ggplot2::element_blank(),
-          legend.title = ggplot2::element_blank())+
+                   legend.title = ggplot2::element_blank())+
     ggplot2::ggtitle(plot_data[["text"]][1])
 
   if(scale == "shape"){
@@ -34,3 +34,4 @@ ci_plot <- function(plot_data, scale = "shape"){
 
   return(plot)
 }
+
