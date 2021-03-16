@@ -86,8 +86,10 @@ books <- rbow::stem_texts(texts = books, language = "english")
 #we'll define a list of terms capturing men and women
 #you can supply your own regex and set own_regex to TRUE in the analysis functions
 #or let rbow construct a default regex for you (* overrides the word end boundary)
-phenomena <- list(female = c("mrs","ms","miss","she","her","lady*"),
-                  male = c("mr","sir","he","him","lord*"))
+phenomena <- list(female = c("mrs","ms","miss","she","her","lady"),
+                  male = c("mr","sir","he","him","lord"))
+
+phenomena <- rbow::stem_texts(texts = phenomena, language = "english")
 
 #let's create a set of descriptor terms to deductively test some hypothesis about how descriptions of men and women differ in jane austen's work 
 descriptors <- list(positive = c("ador*","affection*","appreciat*","cheer*","content*","deligh*","ecsta*","enjoy*","fondness","glad","happy","hope","joy","love","loves","lovin"),
@@ -151,17 +153,17 @@ dfm <- rbow::dfm_analysis(corpus = books, phenomenon = phenomena, window = 10,
                           n_terms = 10, own_regex = FALSE)
 head(dfm[[1]])
 #> $female
-#>        Var1 Freq
-#> 1  dashwood  351
-#> 2       jen  328
-#> 3    elinor  229
-#> 4       mrs  212
-#> 5   mariann  182
-#> 6    ferrar  141
-#> 7    sister  130
-#> 8      miss  115
-#> 9      john  103
-#> 10     time   98
+#>         Var1 Freq
+#> 1   dashwood  380
+#> 2        jen  362
+#> 3        mrs  268
+#> 4     elinor  262
+#> 5    mariann  208
+#> 6  middleton  184
+#> 7     ferrar  153
+#> 8     sister  149
+#> 9       miss  147
+#> 10      john  142
 #> 
 #> $male
 #>          Var1 Freq
@@ -185,17 +187,17 @@ dfm <- rbow::dfm_analysis(corpus = books, phenomenon = phenomena, window = 10,
                           n_terms = 10, tf_idf = TRUE ,own_regex = FALSE)
 head(dfm[[1]])
 #> $female
-#>            Var1       tf-idf
-#> 1272        mrs 0.0097187303
-#> 1245       miss 0.0052719528
-#> 1264     morton 0.0011002336
-#> 665      enforc 0.0003209015
-#> 1926     taylor 0.0003209015
-#> 1068   interpos 0.0002292153
-#> 1642 richardson 0.0002292153
-#> 1799      spark 0.0002292153
-#> 2110     walker 0.0002292153
-#> 2185   youngest 0.0002292153
+#>          Var1       tf-idf
+#> 1152      jen 0.0136073362
+#> 1357      mrs 0.0100739395
+#> 1328     miss 0.0055256310
+#> 1182     ladi 0.0041724152
+#> 1349   morton 0.0010525011
+#> 670     elder 0.0005262506
+#> 1384  newspap 0.0003007146
+#> 697    enforc 0.0002631253
+#> 2062   taylor 0.0002631253
+#> 2345 youngest 0.0002631253
 #> 
 #> $male
 #>         Var1       tf-idf
@@ -244,16 +246,16 @@ dfm <- rbow::dfm_analysis(corpus = books, phenomenon = phenomena, window = 10, n
 head(dfm[[1]])
 #> $female
 #>           Var1       tf-idf
-#> 2120       way 1.833723e-04
-#> 1038    infect 1.375292e-04
-#> 1225   merrier 1.375292e-04
-#> 1479 prettiest 1.375292e-04
-#> 1534    putrid 1.375292e-04
-#> 1726     shill 1.375292e-04
-#> 2132  westward 1.375292e-04
-#> 327  christian 9.168613e-05
-#> 1105      keen 9.168613e-05
-#> 1337     often 9.168613e-05
+#> 670      elder 5.262506e-04
+#> 2275       way 1.503573e-04
+#> 1095    infect 1.127680e-04
+#> 1306   merrier 1.127680e-04
+#> 1578 prettiest 1.127680e-04
+#> 1637    putrid 1.127680e-04
+#> 1852     shill 1.127680e-04
+#> 2287  westward 1.127680e-04
+#> 338  christian 7.517865e-05
+#> 1170      keen 7.517865e-05
 #> 
 #> $male
 #>              Var1       tf-idf
@@ -279,10 +281,10 @@ dfm <- rbow::dfm_analysis(corpus = books, phenomenon = phenomena, window = 10, n
 head(dfm[[4]])
 #> $female
 #>          Var1 tf-idf
-#> 232    bitter      0
-#> 1008 grievous      0
-#> 1075 helpless      0
-#> 1932      sad      0
+#> 240    bitter      0
+#> 1047 grievous      0
+#> 1116 helpless      0
+#> 1997      sad      0
 #> NA       <NA>     NA
 #> NA.1     <NA>     NA
 #> NA.2     <NA>     NA

@@ -83,8 +83,10 @@ books <- rbow::stem_texts(texts = books, language = "english")
 #we'll define a list of terms capturing men and women
 #you can supply your own regex and set own_regex to TRUE in the analysis functions
 #or let rbow construct a default regex for you (* overrides the word end boundary)
-phenomena <- list(female = c("mrs","ms","miss","she","her","lady*"),
-                  male = c("mr","sir","he","him","lord*"))
+phenomena <- list(female = c("mrs","ms","miss","she","her","lady"),
+                  male = c("mr","sir","he","him","lord"))
+
+phenomena <- rbow::stem_texts(texts = phenomena, language = "english")
 
 #let's create a set of descriptor terms to deductively test some hypothesis about how descriptions of men and women differ in jane austen's work 
 descriptors <- list(positive = c("ador*","affection*","appreciat*","cheer*","content*","deligh*","ecsta*","enjoy*","fondness","glad","happy","hope","joy","love","loves","lovin"),
