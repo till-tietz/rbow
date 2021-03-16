@@ -4,12 +4,14 @@
 \alias{clean_text}
 \title{clean text data (remove punctuation, special characters, numbers, english stopwords)}
 \usage{
-clean_text(texts, lexicon = "SMART")
+clean_text(texts, rm_stopwords = FALSE, stopwords_language = NULL)
 }
 \arguments{
 \item{texts}{list of character vectors}
 
-\item{lexicon}{stop word lexicon to use}
+\item{rm_stopwords}{if TRUE clean_text removes stopwords (default FALSE)}
+
+\item{stopwords_language}{stopword dictionary language ISO 639-1 code as character vector}
 }
 \value{
 list of cleaned character vectors
