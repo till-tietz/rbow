@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # rbow
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/till-tietz/rbow/workflows/R-CMD-check/badge.svg)](https://github.com/till-tietz/rbow/actions)
 <!-- badges: end -->
 
 rbow allows you to analyze texts with a view towards relevant terms, their contexts and           associations among each other. It can can run word frequency in context analyses on multiple       texts and dictionaries. 
@@ -75,7 +76,7 @@ books <- lapply(books, function(x)strsplit(x[,1]," ")[[1]])
 #you may wish to run rbow's utility functions for text cleaning and stemming at this point
 #clean_text will turn your tokens to lower case, remove stopwords, symbols, numbers etc. 
 #stem_texts stems your tokens
-books <- rbow::clean_text(texts = books, lexicon = "SMART")
+books <- rbow::clean_text(texts = books, rm_stopwords = TRUE, stopwords_language = "en")
 books <- rbow::stem_texts(texts = books, language = "english")
 
 #now let's define some phenomena we want to analyze. we might wish to know whether 

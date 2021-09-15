@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/till-tietz/rbow/workflows/R-CMD-check/badge.svg)](https://github.com/till-tietz/rbow/actions)
 <!-- badges: end -->
 
 rbow allows you to analyze texts with a view towards relevant terms,
@@ -78,7 +79,7 @@ books <- lapply(books, function(x)strsplit(x[,1]," ")[[1]])
 #you may wish to run rbow's utility functions for text cleaning and stemming at this point
 #clean_text will turn your tokens to lower case, remove stopwords, symbols, numbers etc. 
 #stem_texts stems your tokens
-books <- rbow::clean_text(texts = books, lexicon = "SMART")
+books <- rbow::clean_text(texts = books, rm_stopwords = TRUE, stopwords_language = "en")
 books <- rbow::stem_texts(texts = books, language = "english")
 
 #now let's define some phenomena we want to analyze. we might wish to know whether 
@@ -154,29 +155,29 @@ dfm <- rbow::dfm_analysis(corpus = books, phenomenon = phenomena, window = 10,
 head(dfm[[1]])
 #> $female
 #>         Var1 Freq
-#> 1   dashwood  380
-#> 2        jen  362
-#> 3        mrs  268
-#> 4     elinor  262
-#> 5    mariann  208
-#> 6  middleton  184
-#> 7     ferrar  153
-#> 8     sister  149
-#> 9       miss  147
-#> 10      john  142
+#> 1   dashwood  333
+#> 2        jen  320
+#> 3          s  308
+#> 4     elinor  192
+#> 5        mrs  182
+#> 6  middleton  168
+#> 7       said  159
+#> 8    mariann  153
+#> 9     ferrar  123
+#> 10    sister  111
 #> 
 #> $male
 #>          Var1 Freq
-#> 1        john  151
-#> 2         mrs   98
-#> 3      elinor   80
-#> 4      palmer   76
-#> 5    dashwood   72
-#> 6      ferrar   62
-#> 7        miss   62
-#> 8          mr   62
-#> 9     mariann   59
-#> 10 willoughbi   56
+#> 1        john  139
+#> 2           s  116
+#> 3         mrs   68
+#> 4      palmer   63
+#> 5        said   63
+#> 6      ferrar   56
+#> 7    dashwood   55
+#> 8      elinor   53
+#> 9  willoughbi   51
+#> 10       know   47
 ```
 
 You can extract words that are unique to the context of your phenomena
@@ -187,30 +188,30 @@ dfm <- rbow::dfm_analysis(corpus = books, phenomenon = phenomena, window = 10,
                           n_terms = 10, tf_idf = TRUE ,own_regex = FALSE)
 head(dfm[[1]])
 #> $female
-#>          Var1       tf-idf
-#> 1152      jen 0.0136073362
-#> 1357      mrs 0.0100739395
-#> 1328     miss 0.0055256310
-#> 1182     ladi 0.0041724152
-#> 1349   morton 0.0010525011
-#> 670     elder 0.0005262506
-#> 1384  newspap 0.0003007146
-#> 697    enforc 0.0002631253
-#> 2062   taylor 0.0002631253
-#> 2345 youngest 0.0002631253
+#>           Var1       tf-idf
+#> 1115       jen 0.0120285845
+#> 1321       mrs 0.0068412574
+#> 1291      miss 0.0039468793
+#> 1145      ladi 0.0031950928
+#> 1313    morton 0.0009021438
+#> 645      elder 0.0004886612
+#> 673     enforc 0.0002631253
+#> 1102 introduct 0.0001879466
+#> 1286     mirth 0.0001879466
+#> 1872     spark 0.0001879466
 #> 
 #> $male
-#>         Var1       tf-idf
-#> 880       mr 0.0065711201
-#> 1209     sir 0.0034975316
-#> 799     lord 0.0013778155
-#> 1016   pratt 0.0013778155
-#> 186   carpet 0.0003179574
-#> 266   conjur 0.0003179574
-#> 439       em 0.0003179574
-#> 583  gilbert 0.0003179574
-#> 636    henri 0.0003179574
-#> 707   infant 0.0003179574
+#>        Var1       tf-idf
+#> 843      mr 0.0042394323
+#> 1171    sir 0.0022257020
+#> 983   pratt 0.0013778155
+#> 766    lord 0.0007419007
+#> 260  conjur 0.0003179574
+#> 612   henri 0.0003179574
+#> 47    allus 0.0002119716
+#> 223   clerk 0.0002119716
+#> 421      em 0.0002119716
+#> 547    fuss 0.0002119716
 ```
 
 If you additionally only want to consider certain types of words
@@ -245,30 +246,30 @@ dfm <- rbow::dfm_analysis(corpus = books, phenomenon = phenomena, window = 10, n
                                   own_regex = FALSE)
 head(dfm[[1]])
 #> $female
-#>           Var1       tf-idf
-#> 670      elder 5.262506e-04
-#> 2275       way 1.503573e-04
-#> 1095    infect 1.127680e-04
-#> 1306   merrier 1.127680e-04
-#> 1578 prettiest 1.127680e-04
-#> 1637    putrid 1.127680e-04
-#> 1852     shill 1.127680e-04
-#> 2287  westward 1.127680e-04
-#> 338  christian 7.517865e-05
-#> 1170      keen 7.517865e-05
+#>            Var1       tf-idf
+#> 645       elder 4.886612e-04
+#> 1590     putrid 1.127680e-04
+#> 2216   westward 1.127680e-04
+#> 1063     infect 7.517865e-05
+#> 1270    merrier 7.517865e-05
+#> 1537  prettiest 7.517865e-05
+#> 2036 throughout 7.517865e-05
+#> 2245  withdrawn 7.517865e-05
+#> 97        amiss 3.758933e-05
+#> 262       brave 3.758933e-05
 #> 
 #> $male
 #>              Var1       tf-idf
-#> 145         black 0.0002119716
-#> 925         often 0.0002119716
-#> 75           arch 0.0001059858
-#> 141        bigger 0.0001059858
+#> 82           arch 0.0001059858
+#> 145        bigger 0.0001059858
+#> 149         black 0.0001059858
 #> 163         brave 0.0001059858
-#> 379 disinterested 0.0001059858
-#> 560   friendliest 0.0001059858
-#> 607         gross 0.0001059858
-#> 641        hinder 0.0001059858
-#> 813           mad 0.0001059858
+#> 362 disinterested 0.0001059858
+#> 540   friendliest 0.0001059858
+#> 616        hinder 0.0001059858
+#> 778           mad 0.0001059858
+#> 815           mid 0.0001059858
+#> 939         pearl 0.0001059858
 ```
 
 You can finally subset the output of dfm\_analysis by another
@@ -281,23 +282,23 @@ dfm <- rbow::dfm_analysis(corpus = books, phenomenon = phenomena, window = 10, n
 head(dfm[[4]])
 #> $female
 #>          Var1 tf-idf
-#> 240    bitter      0
-#> 1047 grievous      0
-#> 1116 helpless      0
-#> 1997      sad      0
+#> 246    bitter      0
+#> 1015 grievous      0
+#> 1913      sad      0
 #> NA       <NA>     NA
 #> NA.1     <NA>     NA
 #> NA.2     <NA>     NA
 #> NA.3     <NA>     NA
 #> NA.4     <NA>     NA
 #> NA.5     <NA>     NA
+#> NA.6     <NA>     NA
 #> 
 #> $male
 #>          Var1       tf-idf
-#> 1029 grievous 0.0001128904
-#> 234    bitter 0.0000000000
-#> 1095 helpless 0.0000000000
-#> 1979      sad 0.0000000000
+#> 983  grievous 0.0001128904
+#> 239    bitter 0.0000000000
+#> 1040 helpless 0.0000000000
+#> 1878      sad 0.0000000000
 #> NA       <NA>           NA
 #> NA.1     <NA>           NA
 #> NA.2     <NA>           NA
@@ -316,7 +317,7 @@ tf_idf <- rbow::tf_idf(corpus = books, terms = pride_and_prejudice_names)
 
 head(tf_idf)
 #>                   doc      tf.idf
-#> 2   Pride & Prejudice 0.005713898
+#> 2   Pride & Prejudice 0.004277573
 #> 1 Sense & Sensibility 0.000000000
 #> 3      Mansfield Park 0.000000000
 #> 4                Emma 0.000000000
